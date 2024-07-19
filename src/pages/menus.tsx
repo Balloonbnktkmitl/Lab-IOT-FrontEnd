@@ -7,6 +7,7 @@ import { Alert, Button } from "@mantine/core";
 import { IconAlertTriangleFilled, IconPlus } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 
+
 export default function MenusPage() {
   const { data: menus, error } = useSWR<Menu[]>("/menus");
 
@@ -63,10 +64,18 @@ export default function MenusPage() {
                   <p className="text-xs text-neutral-500">ราคา {menu.price} บาท</p>
                 </div>
 
-                <div className="flex justify-end px-4 pb-2">
-                  <Button component={Link} to={`/menus/${menu.id}`} size="xs" variant="default">
-                    ดูรายละเอียด
-                  </Button>
+                <div className="flex justify-center px-4 pb-2">
+                  <div className="flex justify-end px-4 pb-2">
+                    <Button component={Link} to={`/orders/${menu.id}`} size="xs" variant="default">
+                      ซื้อ
+                    </Button>
+                  </div>
+
+                  <div className="flex justify-end px-4 pb-2">
+                    <Button component={Link} to={`/menus/${menu.id}`} size="xs" variant="default">
+                      ดูรายละเอียด
+                    </Button>
+                  </div>
                 </div>
               </div>
             ))}
