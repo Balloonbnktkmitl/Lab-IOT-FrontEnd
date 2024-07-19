@@ -17,6 +17,9 @@ export default function BookCreatePage() {
       title: "",
       author: "",
       year: 2024,
+      detail: "",
+      story: "",
+      classification: "",
       is_published: false,
     },
 
@@ -24,6 +27,9 @@ export default function BookCreatePage() {
       title: isNotEmpty("กรุณาระบุชื่อหนังสือ"),
       author: isNotEmpty("กรุณาระบุชื่อผู้แต่ง"),
       year: isNotEmpty("กรุณาระบุปีที่พิมพ์หนังสือ"),
+      detail: isNotEmpty("กรุณาระบุรายละเอียดหนังสือ"),
+      story: isNotEmpty("กรุณาระบุเรื่องย่อหนังสือ"),
+      classification: isNotEmpty("กรุณาระบุหมวดหมู่หนังสือ"),
     },
   });
 
@@ -92,8 +98,23 @@ export default function BookCreatePage() {
             />
 
             {/* TODO: เพิ่มรายละเอียดหนังสือ */}
+            <TextInput
+              label="รายละเอียดหนังสือ"
+              placeholder="รายละเอียดหนังสือ"
+              {...bookCreateForm.getInputProps("detail")}
+            />
             {/* TODO: เพิ่มเรื่องย่อ */}
+            <TextInput
+              label="เรื่องย่อ"
+              placeholder="เรื่องย่อ"
+              {...bookCreateForm.getInputProps("story")}
+            />
             {/* TODO: เพิ่มหมวดหมู่(s) */}
+            <TextInput
+              label="หมวดหมู่ (ขั้นด้วย , Ex. นิยาย,สารคดี)"
+              placeholder="หมวดหมู่"
+              {...bookCreateForm.getInputProps("classification")}
+            />
 
             <Checkbox
               label="เผยแพร่"
