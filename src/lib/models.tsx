@@ -15,7 +15,7 @@ export interface Menu {
   price: number;
   detail: string;
   ingredient: string;
-  is_available: boolean;
+  is_published: boolean;
 }
 
 export interface Order {

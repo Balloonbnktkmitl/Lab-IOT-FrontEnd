@@ -12,6 +12,10 @@ import { Notifications } from "@mantine/notifications";
 import BooksPage from "./pages/books";
 import BookByIdPage from "./pages/book-by-id";
 import BookEditById from "./pages/book-edit-by-id";
+import MenusPage from "./pages/menus";
+import MenuCreatePage from "./pages/menu-create";
+import MenusByIdPage from "./pages/menu-by-id";
+import MenusEditById from "./pages/menu-edit-by-id";
 import { ModalsProvider } from "@mantine/modals";
 import BookCreatePage from "./pages/book-create";
 
@@ -41,6 +45,23 @@ const router = createBrowserRouter([
     path: "/books/:bookId/edit",
     element: <BookEditById />,
   },
+  {
+    path: "/menus",
+    element: <MenusPage />,
+  },
+  {
+    path: "/menus/create",
+    element: <MenuCreatePage />,
+  },
+  {
+    path: "/menus/:menuId",
+    element: <MenusByIdPage />,
+  },
+  {
+    path: "/menus/:menuId/edit",
+    element: <MenusEditById />,
+  }
+
 ]);
 
 if (import.meta.env.VITE_API_URL) {
