@@ -20,6 +20,7 @@ import { ModalsProvider } from "@mantine/modals";
 import BookCreatePage from "./pages/book-create";
 import OrderCreatePage from "./pages/menu-oder";
 import StaffPage from "./pages/staff";
+import OrderDetail from "./pages/order-deatil";
 
 const theme = createTheme({
   primaryColor: "orange",
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
   {
     path: "/staffs",
     element: <StaffPage />,
+  }, 
+  {
+    path: "/staffs/:orderId",
+    element: <OrderDetail />,
   }
   
 ]);

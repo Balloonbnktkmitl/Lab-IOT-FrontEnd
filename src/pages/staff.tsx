@@ -4,55 +4,11 @@ import useSWR from "swr";
 import { Order } from "../lib/models";
 import Loading from "../components/loading";
 import { Alert, Button } from "@mantine/core";
-import { IconAlertTriangleFilled, IconPlus, IconTrash } from "@tabler/icons-react";
-import { modals } from "@mantine/modals";
-import axios, { AxiosError } from "axios";
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { notifications } from "@mantine/notifications";
+import { IconAlertTriangleFilled, IconPlus } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 export default function StaffPage() {
   const { data: orders, error } = useSWR<Order[]>("/staffs");
-  const navigate = useNavigate();
-
-  const [isProcessing, setIsProcessing] = useState(false);
-
-  const handleDelete = async (orderId) => {
-    try {
-        setIsProcessing(true);
-        await axios.delete(`/staffs/${orderId}`);
-        notifications.show({
-            title: "ลบรายการสำเร็จ",
-            message: "ลบรายการนี้ออกจากระบบเรียบร้อยแล้ว",
-            color: "green",
-        });
-        navigate("/");
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        if (error.response?.status === 404) {
-          notifications.show({
-            title: "ไม่พบข้อมูลรายการ",
-            message: "ไม่พบข้อมูลรายการที่ต้องการลบ",
-            color: "red",
-          });
-        } else if (error.response?.status || 500 >= 500) {
-          notifications.show({
-            title: "เกิดข้อผิดพลาดบางอย่าง",
-            message: "กรุณาลองใหม่อีกครั้ง",
-            color: "red",
-          });
-        }
-      } else {
-        notifications.show({
-          title: "เกิดข้อผิดพลาดบางอย่าง",
-          message: "กรุณาลองใหม่อีกครั้ง หรือดูที่ Console สำหรับข้อมูลเพิ่มเติม",
-          color: "red",
-        });
-      }
-    } finally {
-      setIsProcessing(false);
-    }
-  };
 
   return (
     <>
@@ -85,37 +41,14 @@ export default function StaffPage() {
                 <div className="p-4">
                   <h2 className="text-lg font-semibold line-clamp-2">{order.name}</h2>
                     <p className="text-xs text-neutral-500">จำนวน {order.total} ชิ้น</p>
-                  <p className="text-xs text-neutral-500">ราคาทั้งหมด {order.price} บาท</p>
+                  <p className="text-xs text-neutral-500">ราคาทั้งหมด {order.price} </p>
                 </div>
                 <div className="flex justify-end px-4 pb-2">
-                <div className="flex justify-between">
-                <Button
-                    color="red"
-                    leftSection={<IconTrash />}
-                    size="xs"
-                    onClick={() => {
-                      modals.openConfirmModal({
-                        title: "คุณต้องการลบหนังสือเล่มนี้ใช่หรือไม่",
-                        children: (
-                          <span className="text-xs">
-                            เมื่อคุณดำนเนินการลบเมนูนี้แล้ว จะไม่สามารถย้อนกลับได้
-                          </span>
-                        ),
-                        labels: { confirm: "ลบ", cancel: "ยกเลิก" },
-                        onConfirm: () => {
-                          handleDelete(order.id);
-                        },
-                        confirmProps: {
-                          color: "red",
-                        },
-                      });
-                    }}
-                    >
-                    ลบเมนูนี้
+                  <Button component={Link} to={`/staffs/${order.id}`} size="xs" variant="default">
+                    ดูรายละเอียด
                   </Button>
                 </div>
               </div>
-            </div>
             ))}
           </div>
         </section>
