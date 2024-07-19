@@ -1,12 +1,11 @@
-import { Alert, Badge, Button, Container, Divider } from "@mantine/core";
+import { Alert, Button, Container, Divider } from "@mantine/core";
 import Layout from "../components/layout";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Order } from "../lib/models";
 import useSWR from "swr";
 import Loading from "../components/loading";
-import { IconAlertTriangleFilled, IconEdit, IconTrash } from "@tabler/icons-react";
+import { IconAlertTriangleFilled, IconTrash } from "@tabler/icons-react";
 import { modals } from "@mantine/modals";
-import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { notifications } from "@mantine/notifications";
 
@@ -16,13 +15,10 @@ export default function OrderDetail() {
 
   const { data: order, isLoading, error } = useSWR<Order>(`/staffs/${orderId}`);
 
-  const [isProcessing, setIsProcessing] = useState(false);
-
   const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {
-      setIsProcessing(true);
       await axios.delete(`/staffs/${orderId}`);
       notifications.show({
         title: "ลบออเดอร์สำเร็จ",
@@ -52,8 +48,6 @@ export default function OrderDetail() {
           color: "red",
         });
       }
-    } finally {
-      setIsProcessing(false);
     }
   };
 

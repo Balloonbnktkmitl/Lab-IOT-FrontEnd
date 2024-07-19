@@ -1,11 +1,11 @@
 import Layout from "../components/layout";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { Menu } from "../lib/models";
 import useSWR from "swr";
 import Loading from "../components/loading";
-import { IconAlertTriangleFilled, IconEdit } from "@tabler/icons-react";
+import { IconAlertTriangleFilled } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
-import { Alert, Badge, Button, Checkbox, Container, Divider, NumberInput, TextInput } from "@mantine/core";
+import { Alert, Button, Container, Divider, NumberInput, TextInput } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { useState, useEffect } from "react";
 import axios, { AxiosError } from "axios";
@@ -44,7 +44,7 @@ export default function OrderCreatePage() {
             price: values.price * values.total,
             };
         
-          const response = await axios.post<Order>(`/orders`, ordernow);
+          await axios.post<Order>(`/orders`, ordernow);
           notifications.show({
             title: "สั่งอาหารสำเร็จ",
             message: "อาหารได้เพิ่มในรายการเรียบร้อยแล้ว",
