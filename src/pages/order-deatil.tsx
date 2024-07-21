@@ -73,8 +73,10 @@ export default function OrderDetail() {
               <p className="italic text-neutral-500 mb-4">ราคา {order.price} บาท</p>
               <div className="grid grid-cols-1 lg:grid-cols-3">
                   <h3>จำนวน {order.total} ชิ้น</h3>
-                
-                </div>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-3">
+                  <h3>หมายเหตุ : {order.note}</h3>
+              </div>
               <Divider className="mt-4" />
               
               <div className="flex justify-between m-2">

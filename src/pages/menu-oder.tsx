@@ -22,11 +22,13 @@ export default function OrderCreatePage() {
             name:"",
             price:0,
             total:1,
+            note:"",
         },
         validate:{
             name:isNotEmpty("กรุณาระบุชื่อเมนู"),
             price:isNotEmpty("กรุณาระบุราคา"),
             total:isNotEmpty("กรุณาระบุจำนวน"),
+            note:isNotEmpty("กรุณาระบุหมายเหตุ ไม่มีใส่ -"),
         },
     });
 
@@ -42,6 +44,7 @@ export default function OrderCreatePage() {
             name: values.name,
             total: values.total,
             price: values.price * values.total,
+            note: values.note,
             };
         
           await axios.post<Order>(`/orders`, ordernow);
@@ -143,6 +146,12 @@ export default function OrderCreatePage() {
                             readOnly
                             {...orderCreateForm.getInputProps("price")}
                             style={{ display: 'none' }}
+                            />
+
+                            <TextInput
+                              label="หมายเหตุ"
+                              placeholder="หมายเหตุ"
+                              {...orderCreateForm.getInputProps("note")}
                             />
                             <Divider />
                             <Button type="submit" loading={isProcessing}>

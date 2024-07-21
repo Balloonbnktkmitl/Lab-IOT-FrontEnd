@@ -20,7 +20,7 @@ export default function StaffPage() {
           }}
         >
           <h1 className="text-5xl mb-2">รายการออเดอร์</h1>
-          <h2>รายการที่สั่งอาหารมาทั้งหมด</h2>
+          <h2>รายการที่ออเดอร์มาทั้งหมด</h2>
         </section>
 
         <section className="container mx-auto py-8">

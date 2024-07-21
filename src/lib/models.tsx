@@ -23,4 +23,5 @@ export interface Order {
   name: string;
   total: number;
   price: number;
+  note: string;
 }

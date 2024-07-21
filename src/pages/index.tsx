@@ -2,6 +2,7 @@ import Layout from "../components/layout";
 import cafeBackgroundImage from "../assets/images/bg-cafe-1.jpg";
 import ajPanwitImage from "../assets/images/aj-panwit.jpg";
 import coffeeImage from "../assets/images/coffee-1.jpg";
+import bnktImage from "../assets/images/bnkt.png";
 
 export default function HomePage() {
   return (
@@ -31,15 +32,25 @@ export default function HomePage() {
             <img src={ajPanwitImage} alt="Panwit Tuwanut" className="h-full w-full object-cover" />
           </div>
         </div>
-        <p className="text-right mt-8">
-          ปัจจุบันค่าเฟ่ และห้องสมุดของเรา อยู่ในช่วงการดูแลของ ....
-          {/* TODO: ชื่อของตนเอง, รหัสประจำตัวนักศึกษา และแนะนำคาเฟ่นี้ต่ออีกสักหน่อย + ใส่รูปของตนเอง (ไม่จำเป็นหากไม่สะดวกใจใส่รูป) */}
-          ซึ่งมีบริการ... Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          placeat sit ea sapiente officia sunt cumque impedit, reiciendis quis eius asperiores!
-          Minus, mollitia? Vitae inventore odio quod ducimus similique, expedita sequi, reiciendis
-          rem recusandae impedit voluptatibus quo veritatis ut quis et suscipit? Eligendi, neque!
-          Earum quaerat unde similique totam. Pariatur!
-        </p>
+      </section>
+
+      <section className="container mx-auto py-8">
+        <h1>ปัจจุบันคาเฟ่ และห้องสมุดของเรา อยู่ในช่วงการดูแลของ</h1>
+        <h2>ผู้ดูแลร้านอันดับ 1 (อู้เก่ง)</h2>
+
+        <div className="grid grid-cols-3 gap-4">
+          <p className="text-left col-span-2">
+            นายคนนี้ชื่อ นายกิตติภณ ทัศนเปรมสิน รหัสนักศึกษา 65070021 นักศึกษาชั้นปีที่ 3 ได้เข้ารับการฝึกงานที่ IoT Library & Cafe นี้โดยได้รับการรับรองจาก 
+            ผศ.ดร. ปานวิทย์ ธุวะนุติ และนายกฤตณัฏฐ์ ศิริพรนพคุณ ให้เข้ามาเป็นผู้ดูแลร้านอันดับ 1 ของร้านนี้ โดยเขามีความสามารถในการดูแลร้านและห้องสมุดของเราอย่างมืออาชีพ
+            (การอู้) โดยทางร้านเรามีบริการอาหารและเครื่องดื่มที่อร่อย และมีหนังสือที่หลากหลายให้คุณได้อ่านและเรียนรู้เรื่องใหม่ๆ ซึ่งเครื่องดื่มต่างๆ ราคาค่อนข้างถูก(มั้ง) อาหารก็อร่อย(แหละ)
+            ระหว่างที่นายคนนี้ดูแลร้านนายคนนี้ได้ตั้งใจทำงาน(นอน) และดูแลลูกค้าเป็นอย่างดีเสมอมา(ด่าทั้งร้าน) และเป็นคนที่มีความสุภาพและเป็นกันเองกับลูกค้าทุกคน(แต่ก็ด่าทั้งร้าน)
+            สุดท้ายขอให้ระวังบุคคลดักล่าวไว้ด้วยนะครับ เนื่องจากผศ.ดร. ปานวิทย์ ธุวะนุติ และนายกฤตณัฏฐ์ ศิริพรนพคุณ ได้เตะตูดไล่ออกจากร้านไปแล้ว อิอิ
+          </p>
+
+          <div>
+            <img src={bnktImage} alt="bnkt" className="h-full w-full object-cover" />
+          </div>
+        </div>
       </section>
 
       <section className="w-full flex justify-center">
